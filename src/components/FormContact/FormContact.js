@@ -85,7 +85,7 @@ export default function ContactForm() {
 
       <button className={s.button} type="submit">
         <span className={s.btnText}>Add contact</span>
-      </button>
+       </button>
     </form>
   );
 }
