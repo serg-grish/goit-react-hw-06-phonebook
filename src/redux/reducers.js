@@ -9,12 +9,10 @@ const items = createReducer([],  {
 });
 
 const filter = createReducer('', {
-    [actions.changeFilter]; (_, { payload })
+    [actions.changeFilter]: (_, { payload }) => payload,
 });
 
 const rootReducer = combineReducers({
     items,
     filter,
 });
-
-export default rootReducer;
