@@ -9,8 +9,9 @@ export const addContact = createAction("contacts/add", (name, number) => ({
     },
 }));
 
-export const deleteContact = createAction('contacts/delite');
+export const deleteContact = createAction('contacts/delete');
 export const changeFilter = createAction('contacts/changeFilter');
 
 const contactsAction = { addContact, changeFilter, deleteContact };
+
 export default contactsAction;

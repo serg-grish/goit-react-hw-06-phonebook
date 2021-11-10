@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import s from "./FormContact.module.css";
 import PropTypes from "prop-types";
-import { contactsActions } from "../../redux/action";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import contactsActions from "../../redux/actions";
 import { getContacts } from "../../redux/selectors";
-
 
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts)
-
+  const contacts = useSelector(getContacts);
 
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
@@ -46,7 +44,6 @@ export default function ContactForm() {
       reset();
       return;
     }
-
 
     dispatch(contactsActions.addContact(name, number));
     reset();

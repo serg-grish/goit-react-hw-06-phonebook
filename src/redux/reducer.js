@@ -1,4 +1,5 @@
-import { createReducer, combineReducers } from "@reduxjs/toolkit";
+import { combineReducers } from "reduxjs";
+import { createReducer } from "@reduxjs/toolkit";
 import actions from "./actions";
 
 
@@ -12,7 +13,7 @@ const filter = createReducer('', {
     [actions.changeFilter]: (_, { payload }) => payload,
 });
 
-const rootReducer = combineReducers({
+export default combineReducers({
     items,
     filter,
 });

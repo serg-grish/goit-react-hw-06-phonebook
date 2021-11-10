@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import ContactListItem from "./ContactListItem/ContactListItem";
 import { useSelector, useDispatch } from "react-redux";
-import contactsAction from "../../redux/action";
+import contactsAction from "../../redux/actions";
 import { getVisibleContacts } from "../../redux/selectors";
 
 // const ContactList = ({ contacts, onDeleteContact }) => (
