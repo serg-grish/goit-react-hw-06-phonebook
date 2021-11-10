@@ -43,18 +43,3 @@ export default function App() {
     setContacts(contacts.filter((contact) => contact.id !== contactId));
   };
 
-  return (
-    <>
-      <h1>Phonebook</h1>
-
-      <FormContact onSubmit={addContact} />
-
-      <h2>Contants</h2>
-      <Filter value={filter} onChange={changeFilter} />
-      <ContactsList
-        contacts={getVisibleContacts()}
-        onDeleteContact={deleteContact}
-      ></ContactsList>
-    </>
-  );
-}

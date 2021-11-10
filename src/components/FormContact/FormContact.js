@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import s from "./FormContact.module.css";
 import PropTypes from "prop-types";
+import { addContact } from "../../redux/action";
+import { useDispatch } from "react-redux";
+
 
 export default function ContactForm({ onSubmit }) {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+
+  const dispatch = useDispatch();
+
 
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
@@ -22,7 +28,7 @@ export default function ContactForm({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(name, number);
+    dispatch(addContact);
     reset();
   };
 
