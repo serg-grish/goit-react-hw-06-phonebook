@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import s from "./FormContact.module.css";
 import PropTypes from "prop-types";
-import { addContact } from "../../redux/action";
-import { useDispatch } from "react-redux";
+import { contactsActions } from "../../redux/action";
+import { useSelector,useDispatch } from "react-redux";
+import { getContacts } from "../../redux/selectors";
 
 
-export default function ContactForm({ onSubmit }) {
+export default function ContactForm() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
   const dispatch = useDispatch();
+  const contacts = useSelector(getContacts)
 
 
   const handleChange = (e) => {
@@ -28,7 +30,25 @@ export default function ContactForm({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addContact);
+
+    if (name === "") {
+      alert(`Введите, пожалуйста, имя контакта.`);
+      return;
+    }
+
+    if (number === "") {
+      alert(`Введите, пожалуйста, номер телефона контакта.`);
+      return;
+    }
+
+    if (contacts.find((contact) => contact.name === name)) {
+      alert(`${name} is already in contacts.`);
+      reset();
+      return;
+    }
+
+
+    dispatch(contactsActions.addContact(name, number));
     reset();
   };
 

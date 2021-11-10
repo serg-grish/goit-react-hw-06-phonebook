@@ -2,7 +2,7 @@ import s from "./ContactsList.module.css";
 import React from "react";
 import PropTypes from "prop-types";
 import ContactListItem from "./ContactListItem/ContactListItem";
-import { useSelector, useDespatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import contactsAction from "../../redux/action";
 import { getVisibleContacts } from "../../redux/selectors";
 
@@ -11,7 +11,7 @@ import { getVisibleContacts } from "../../redux/selectors";
     const contacts = useSelector(getVisibleContacts);
     const dispatch = useDispatch();
 
-    const onDeleteContact = (id) dispatch(contactsAction.deleteContact(id));
+    const onDeleteContact = (id) => dispatch(contactsAction.deleteContact(id));
 
 
   return (
@@ -21,7 +21,7 @@ import { getVisibleContacts } from "../../redux/selectors";
         key={id}
         contactName={name}
         contactNumber={number}
-        onClickDeleteContact={() => onDeleteContact(id))}
+        onClickDeleteContact={() => onDeleteContact(id)}
       />
     ))}
   </ul>
