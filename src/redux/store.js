@@ -1,11 +1,19 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import rootReducer from "./reducers";
-import { persistStore, persistReducer } from "redux-persist";
+import { persistStore, persistReducer,  FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER, } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import logger from "redux-logger";
+import contactsReducer from "./reducer";
 
-const persistConfig = {
+const phonebookPersistConfig = {
     key: 'contacts',
     storage,
+    blacklist: ["filter"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
