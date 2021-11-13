@@ -6,18 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import contactsActions from "../../redux/actions";
 import { getVisibleContacts } from "../../redux/selectors";
 
-// const ContactList = ({ contacts, onDeleteContact }) => (
-//   <ul className={s.list}>
-//     {contacts.map(({ id, name, number }) => (
-//       <ContactListItem
-//         key={id}
-//         contactName={name}
-//         contactNumber={number}
-//         onClickDeleteContact={() => onDeleteContact(id)}
-//       />
-//     ))}
-//   </ul>
-// );
 export default function ContactList() {
   const contacts = useSelector(getVisibleContacts);
   const dispatch = useDispatch();
@@ -46,5 +34,5 @@ ContactList.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
-  onDeleteContact: PropTypes.func.isRequired,
+  onDeleteContact: PropTypes.func,
 };
